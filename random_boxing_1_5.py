@@ -44,8 +44,7 @@ for frame_skip_agent_A in xrange(1,6): # Agent A is allowed to change his action
   for frame_skip_agent_B in xrange(1,31): # Agent B is allowed to change his action every Y frames
     frame_counter = 0
     frame_counter_reset = frame_skip_agent_A * frame_skip_agent_B
-    print("Executing frame_skip_agent_A: %d, frame_skip_agent_B: %d" % (frame_skip_agent_A, frame_skip_agent_B))
-    # Play 250 episodes
+    # Play 300 episodes
     for episode in xrange(300):
       total_reward = score_A = score_B = 0
       ale.setMode(1) # Switch Boxing to two player mode
