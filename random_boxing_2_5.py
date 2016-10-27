@@ -37,10 +37,10 @@ legal_actionsB = ale.getLegalActionSetB()
 # to be able to emulate real time behaviour by setting individual frame skips
 ale.setFloat("repeat_action_probability", 0.0);
 
-result_file = open("result_1_5.csv", "w")
+result_file = open("result_2_5.csv", "w")
 result_file.write("# frame_skip_agent_A, frame_skip_agent_B, episode, score_A, score_B, reward\n")
 
-for frame_skip_agent_A in xrange(1,6): # Agent A is allowed to change his action every X frames
+for frame_skip_agent_A in xrange(2,6): # Agent A is allowed to change his action every X frames
   for frame_skip_agent_B in xrange(1,31): # Agent B is allowed to change his action every Y frames
     frame_counter = 0
     frame_counter_reset = frame_skip_agent_A * frame_skip_agent_B
