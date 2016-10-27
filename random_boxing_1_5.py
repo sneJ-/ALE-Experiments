@@ -37,16 +37,16 @@ legal_actionsB = ale.getLegalActionSetB()
 # to be able to emulate real time behaviour by setting individual frame skips
 ale.setFloat("repeat_action_probability", 0.0);
 
-result_file = open("result.csv", "w")
+result_file = open("result_1_5.csv", "w")
 result_file.write("# frame_skip_agent_A, frame_skip_agent_B, episode, score_A, score_B, reward\n")
 
-for frame_skip_agent_A in xrange(1,11): # Agent A is allowed to change his action every X frames
-  for frame_skip_agent_B in xrange(1,11): # Agent B is allowed to change his action every Y frames
+for frame_skip_agent_A in xrange(1,6): # Agent A is allowed to change his action every X frames
+  for frame_skip_agent_B in xrange(1,31): # Agent B is allowed to change his action every Y frames
     frame_counter = 0
     frame_counter_reset = frame_skip_agent_A * frame_skip_agent_B
     print("Executing frame_skip_agent_A: %d, frame_skip_agent_B: %d" % (frame_skip_agent_A, frame_skip_agent_B))
-    # Play 10000 episodes
-    for episode in xrange(2000):
+    # Play 250 episodes
+    for episode in xrange(300):
       total_reward = score_A = score_B = 0
       ale.setMode(1) # Switch Boxing to two player mode
 
@@ -72,6 +72,6 @@ for frame_skip_agent_A in xrange(1,11): # Agent A is allowed to change his actio
         total_reward += reward
 
       result_file.write("%d,%d,%d,%d,%d,%d\n" % (frame_skip_agent_A,frame_skip_agent_B,episode,score_A,score_B,total_reward)) 
+      result_file.flush()
       ale.reset_game()
-    result_file.flush()
 result_file.close()
