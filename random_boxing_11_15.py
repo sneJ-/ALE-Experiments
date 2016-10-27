@@ -73,5 +73,5 @@ for frame_skip_agent_A in xrange(11,16): # Agent A is allowed to change his acti
 
       result_file.write("%d,%d,%d,%d,%d,%d\n" % (frame_skip_agent_A,frame_skip_agent_B,episode,score_A,score_B,total_reward)) 
       ale.reset_game()
-    result_file.flush()
+      result_file.flush()
 result_file.close()
