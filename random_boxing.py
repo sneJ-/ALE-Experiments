@@ -5,6 +5,12 @@
 # Author: Jens Roewekamp
 #
 import sys
+import os
+
+#check if ALE_PATH exits and add to path if it exits
+if os.environ['ALE_PATH']:
+    sys.path.append(os.environ['ALE_PATH'])
+
 from random import randrange
 from ale_python_interface import ALEInterface
 
