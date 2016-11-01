@@ -6,10 +6,18 @@ def main():
     iFile = open('result.csv', 'rb')
     reader = csv.reader(filter(lambda row: row[0]!='#', iFile))
 
-    values = average = {}
+    values = {}
+    average = {}
+    points_A_vector = []
+    points_B_vector = []
+    diff_vector = []
 
-    # read values from csv file and group by frame_skip_A, frame_skip_B
+    # read values from csv file
     for row in reader:
+        points_A_vector.append(int(row[3]))
+        points_B_vector.append(int(row[4]))
+        diff_vector.append(int(row[5]))
+        # group by frame_skip_A, frame_skip_B
         if values.has_key((int(row[0]),int(row[1]))):
             scoreA = values.get((int(row[0]),int(row[1])))[0]
             scoreB = values.get((int(row[0]),int(row[1])))[1]
@@ -46,6 +54,16 @@ def main():
             average_difference_B.append(average.get((i,fixed_frame_skip))[2])
         plot_frame_skip(frame_skip_opponent, average_difference_A, average_difference_B, fixed_frame_skip)
 
+    # calculate and output the total scores and relate the total difference in % to the total of all points scored
+    stat_file = open("statistics.txt", "w")
+    stat_file.write("total sessions: %d\n" % (len(points_A_vector)))
+    stat_file.write("total points A: %d\n" %(sum(points_A_vector)))
+    stat_file.write("total points B: %d\n" % (sum(points_B_vector)))
+    stat_file.write("total difference: %d\n" % (sum(diff_vector)))
+    stat_file.write("average difference per session: %.4f\n" % (sum(diff_vector)/float(len(points_A_vector))))
+    stat_file.write("total difference in %% from total points: %.4f\n" % (float(100)*sum(diff_vector)/(sum(points_A_vector)+sum(points_B_vector))))
+    stat_file.close()
+
 # plot average difference / frame skip opponent graphs with fixed frame skip of frame_skip
 def plot_frame_skip(frame_skip_opponent, average_difference_A, average_difference_B, fixed_frame_skip):
     plt.plot(frame_skip_opponent, average_difference_A, 'ro', label='Player A')
@@ -60,4 +78,5 @@ def plot_frame_skip(frame_skip_opponent, average_difference_A, average_differenc
     plt.savefig("plots/frame_skip_%s.png" %(fixed_frame_skip))
     plt.close()
 
+# execute the program
 main()

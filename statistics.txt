@@ -1,0 +1,6 @@
+total sessions: 279000
+total points A: 3812839
+total points B: 4124552
+total difference: -311713
+average difference per session: -1.1173
+total difference in % from total points: -3.9271
