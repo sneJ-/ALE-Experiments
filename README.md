@@ -1,5 +1,5 @@
 # ALE-Experiments
-Two random agents play boxing in two player mode with different frame skip rates to evaluate the impact of frame skip in boxing and to check if boxing treats its players equally.
+Two random agents play boxing in two player mode with different frame skip rates to analyse the impact of frame skip in boxing, and if boxing treats its players equally.
 
 ## Statistics
 * total sessions: 279000
