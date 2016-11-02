@@ -69,7 +69,7 @@ def plot_frame_skip(frame_skip_opponent, average_difference_A, average_differenc
     plt.plot(frame_skip_opponent, average_difference_A, 'ro', label='Player A')
     plt.plot(frame_skip_opponent, average_difference_B, 'bs', label='Player B')
 
-    legend = plt.legend(loc='lower left', shadow=True)
+    legend = plt.legend(loc='upper left', shadow=True)
     plt.xlabel('frame skip opponent (frames)')
     plt.ylabel('average result difference (points)')
     plt.title('Fixed frame skip of %s' %(fixed_frame_skip))
