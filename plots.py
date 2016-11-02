@@ -51,7 +51,7 @@ def main():
         average_difference_B = []
         for i in frame_skip_opponent:
             average_difference_A.append(average.get((fixed_frame_skip,i))[2])
-            average_difference_B.append(average.get((i,fixed_frame_skip))[2])
+            average_difference_B.append(-average.get((i,fixed_frame_skip))[2])
         plot_frame_skip(frame_skip_opponent, average_difference_A, average_difference_B, fixed_frame_skip)
 
     # calculate and output the total scores and relate the total difference in % to the total of all points scored
