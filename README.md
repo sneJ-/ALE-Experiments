@@ -10,3 +10,5 @@ Two random agents play boxing in two player mode with different frame skip rates
 * total difference in % from total points: -3.9271
 
 ![example statistic with fixed frame rate of 1](https://github.com/sneJ-/ALE-Experiments/raw/master/plots/frame_skip_1.png)
+
+You have to add the boxing rom to the folder to play the game.
